@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日志监控 · 徒步天气</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0; padding: 0;
+    background: #0f172a; color: #e2e8f0;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 12px; line-height: 1.5;
+}
+header {
+    position: sticky; top: 0; z-index: 10;
+    background: #1e293b; padding: 8px 12px;
+    border-bottom: 1px solid #334155;
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+header h1 { margin: 0; font-size: 13px; font-weight: 600; color: #f1f5f9; }
+header .ctrl-group { display: flex; gap: 4px; align-items: center; }
+header button {
+    background: #334155; color: #cbd5e1; border: none;
+    padding: 4px 10px; border-radius: 4px; cursor: pointer;
+    font-family: inherit; font-size: 11px;
+}
+header button.active { background: #3b82f6; color: white; }
+header button:hover { background: #475569; }
+header input[type="text"] {
+    background: #0f172a; color: #e2e8f0;
+    border: 1px solid #334155; border-radius: 4px;
+    padding: 4px 8px; font-family: inherit; font-size: 11px;
+    width: 200px;
+}
+header label { color: #94a3b8; font-size: 11px; display: flex; gap: 4px; align-items: center; cursor: pointer; }
+header .stats { color: #64748b; font-size: 11px; margin-left: auto; }
+header .warning-banner {
+    color: #fbbf24; font-size: 11px;
+    padding: 2px 8px; background: rgba(251, 191, 36, 0.1);
+    border-radius: 4px; border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+#log-list {
+    list-style: none; margin: 0; padding: 4px 0;
+    word-break: break-all; white-space: pre-wrap;
+}
+#log-list li {
+    padding: 1px 12px; border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+#log-list li.level-DEBUG { color: #64748b; }
+#log-list li.level-INFO { color: #cbd5e1; }
+#log-list li.level-WARNING { color: #fbbf24; background: rgba(251, 191, 36, 0.05); }
+#log-list li.level-ERROR { color: #f87171; background: rgba(248, 113, 113, 0.08); }
+#log-list li.level-CRITICAL { color: #fff; background: rgba(220, 38, 38, 0.3); }
+#log-list li.hidden { display: none; }
+#log-list li .ts { color: #64748b; }
+#log-list li .lvl { font-weight: 600; padding: 0 4px; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>📜 日志监控</h1>
+    <div class="ctrl-group">
+        <button data-level="ALL" class="active">全部</button>
+        <button data-level="INFO">INFO</button>
+        <button data-level="WARNING">WARN+</button>
+        <button data-level="ERROR">ERROR</button>
+    </div>
+    <input type="text" id="search" placeholder="搜索 (正则)" />
+    <label><input type="checkbox" id="autoscroll" checked /> 自动滚</label>
+    <button id="clear-btn">清屏</button>
+    <span class="stats" id="stats">0 行</span>
+    <span class="warning-banner">仅本机可访问</span>
+</header>
+
+<ul id="log-list"></ul>
+
+<script>
+const LEVEL_ORDER = {DEBUG:10, INFO:20, WARNING:30, ERROR:40, CRITICAL:50};
+let currentMinLevel = LEVEL_ORDER.INFO;  // 默认 INFO+ (隐藏 DEBUG)
+let searchRegex = null;
+let autoScroll = true;
+const MAX_LINES = 1000;
+let totalLines = 0;
+
+const list = document.getElementById('log-list');
+const statsEl = document.getElementById('stats');
+
+function parseLevel(line) {
+    // line 格式: "2026-07-09 14:26:15 | ERROR    | backend.app:140 | msg..."
+    const m = line.match(/\|\s+(DEBUG|INFO|WARNING|ERROR|CRITICAL)\s+\|/);
+    return m ? m[1] : 'INFO';
+}
+
+function appendLine(line) {
+    if (!line) return;
+    const level = parseLevel(line);
+    const li = document.createElement('li');
+    li.className = `level-${level}`;
+    li.dataset.level = LEVEL_ORDER[level] || 20;
+    li.dataset.raw = line;
+
+    // 把时间、级别、其余内容拆出来染色
+    const parts = line.split(' | ');
+    if (parts.length >= 3) {
+        const ts = parts[0];
+        const lvl = parts[1].trim();
+        const rest = parts.slice(2).join(' | ');
+        li.innerHTML = `<span class="ts">${ts}</span> <span class="lvl">${lvl}</span> ${escapeHtml(rest)}`;
+    } else {
+        li.textContent = line;
+    }
+
+    applyFilter(li);
+    list.appendChild(li);
+    totalLines++;
+    // 上限: 旧节点丢掉
+    if (totalLines > MAX_LINES) {
+        const old = list.firstChild;
+        if (old) { list.removeChild(old); totalLines--; }
+    }
+    if (autoScroll) window.scrollTo(0, document.body.scrollHeight);
+    updateStats();
+}
+
+function escapeHtml(s) {
+    return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+}
+
+function applyFilter(li) {
+    const lvl = parseInt(li.dataset.level || 20);
+    const showByLevel = lvl >= currentMinLevel;
+    const raw = li.dataset.raw || '';
+    const showBySearch = !searchRegex || searchRegex.test(raw);
+    li.classList.toggle('hidden', !(showByLevel && showBySearch));
+}
+
+function updateStats() {
+    const visible = list.querySelectorAll('li:not(.hidden)').length;
+    statsEl.textContent = `${visible}/${totalLines} 行`;
+}
+
+function refilterAll() {
+    list.querySelectorAll('li').forEach(applyFilter);
+    updateStats();
+}
+
+// 级别按钮
+document.querySelectorAll('header button[data-level]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('header button[data-level]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const lvl = btn.dataset.level;
+        currentMinLevel = lvl === 'ALL' ? LEVEL_ORDER.DEBUG : LEVEL_ORDER[lvl];
+        refilterAll();
+    });
+});
+
+// 搜索
+document.getElementById('search').addEventListener('input', (e) => {
+    const txt = e.target.value.trim();
+    try {
+        searchRegex = txt ? new RegExp(txt, 'i') : null;
+        e.target.style.borderColor = '';
+    } catch {
+        e.target.style.borderColor = '#f87171';
+        return;
+    }
+    refilterAll();
+});
+
+// 自动滚
+document.getElementById('autoscroll').addEventListener('change', (e) => {
+    autoScroll = e.target.checked;
+});
+
+// 清屏
+document.getElementById('clear-btn').addEventListener('click', () => {
+    list.innerHTML = '';
+    totalLines = 0;
+    updateStats();
+});
+
+// 初始拉历史
+fetch('/admin/logs/history?lines=200')
+    .then(r => r.json())
+    .then(d => {
+        (d.lines || []).forEach(appendLine);
+    })
+    .catch(e => appendLine(`[页面] 拉取历史失败: ${e}`));
+
+// SSE 订阅
+function connectSSE() {
+    const es = new EventSource('/admin/logs/stream');
+    es.onmessage = (ev) => {
+        try {
+            const d = JSON.parse(ev.data);
+            appendLine(d.line);
+        } catch {}
+    };
+    es.onerror = () => {
+        appendLine('[页面] SSE 断开, 5s 后重连...');
+        es.close();
+        setTimeout(connectSSE, 5000);
+    };
+}
+connectSSE();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+version: '3.8'
+
+# 单机部署: backend + SQLite, 无外部依赖.
+# 多实例生产时再加 Redis (cache 层) + Postgres (DATABASE_URL).
+services:
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:////app/data/app.db
+      - QWEATHER_API_KEY=${QWEATHER_API_KEY}
+      - QWEATHER_API_HOST=${QWEATHER_API_HOST}
+      - CAIYUN_TOKEN=${CAIYUN_TOKEN}
+      - SECRET_KEY=${SECRET_KEY}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
+      - CACHE_TTL=${CACHE_TTL}
+      - SCHEDULER_INTERVAL=${SCHEDULER_INTERVAL}
+    volumes:
+      - ./data:/app/data
+      - ./gpx:/app/gpx
+      - ./web:/app/web
+    restart: unless-stopped

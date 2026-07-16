@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <title>登录 · 徒步路线天气监测</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body class="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+
+    <div class="w-full max-w-md">
+        <div class="text-center mb-6">
+            <div class="text-5xl mb-2">⛰️</div>
+            <h1 class="text-2xl font-bold text-slate-800">徒步路线天气监测</h1>
+            <p class="text-sm text-slate-500 mt-1">登录后查看路线预报与风险徽章</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="flex border-b border-slate-200 mb-4">
+                <button id="tab-login" class="flex-1 py-2 text-sm font-medium border-b-2 border-emerald-600 text-emerald-700">登录</button>
+                <button id="tab-register" class="flex-1 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500">注册</button>
+            </div>
+
+            <div id="error-box" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm rounded px-3 py-2 mb-4"></div>
+            <div id="info-box" class="hidden bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm rounded px-3 py-2 mb-4"></div>
+
+            <form id="form-login" class="space-y-4">
+                <div>
+                    <label class="block text-xs text-slate-600 mb-1">用户名</label>
+                    <input type="text" id="login-username" autocomplete="username" required
+                           class="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-600 mb-1">密码</label>
+                    <input type="password" id="login-password" autocomplete="current-password" required
+                           class="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none">
+                </div>
+                <button type="submit" id="btn-login-submit"
+                        class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded text-sm font-medium transition disabled:opacity-60">
+                    登录
+                </button>
+            </form>
+
+            <form id="form-register" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-xs text-slate-600 mb-1">用户名</label>
+                    <input type="text" id="reg-username" autocomplete="username" required
+                           class="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-600 mb-1">邮箱</label>
+                    <input type="email" id="reg-email" autocomplete="email" required
+                           placeholder="name@gmail.com (不能用 test.local 等保留域名)"
+                           class="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none placeholder-slate-400">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-600 mb-1">密码 (至少 6 位)</label>
+                    <input type="password" id="reg-password" autocomplete="new-password" required minlength="6"
+                           class="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none">
+                </div>
+                <button type="submit" id="btn-register-submit"
+                        class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded text-sm font-medium transition disabled:opacity-60">
+                    注册并登录
+                </button>
+            </form>
+        </div>
+
+        <p class="text-center text-xs text-slate-400 mt-4">⚠️ 本系统仅供参考, 最终是否出行请咨询当地向导</p>
+    </div>
+
+    <script src="/static/login.js"></script>
+</body>
+</html>

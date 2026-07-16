@@ -1,0 +1,176 @@
+2026-07-14 05:52:56 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 05:52:56
+2026-07-14 05:53:00 | INFO    | __main__:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 4.1s
+2026-07-14 11:59:15 | INFO    | __main__:732 | 启动 http://localhost:8000
+2026-07-14 11:59:15 | INFO    | __main__:733 | GPX 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/gpx
+2026-07-14 11:59:15 | INFO    | __main__:734 | Web 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/web
+2026-07-14 11:59:15 | INFO    | __main__:735 | 数据源: open-meteo=on, qweather=on, caiyun=on
+2026-07-14 11:59:15 | INFO    | __main__:53 | 启动: 初始化数据库与路由缓存
+2026-07-14 11:59:15 | INFO    | __main__:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-14 11:59:15 | INFO    | __main__:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-14 11:59:15 | INFO    | __main__:117 | 从数据库加载路线: 梅子坪古道环线
+2026-07-14 11:59:45 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 11:59:45
+2026-07-14 11:59:55 | INFO    | __main__:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 9.5s
+2026-07-14 15:01:40 | INFO    | backend.app:53 | 启动: 初始化数据库与路由缓存
+2026-07-14 15:01:40 | INFO    | backend.app:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-14 15:01:40 | INFO    | backend.app:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-14 15:01:40 | INFO    | backend.app:117 | 从数据库加载路线: 梅子坪古道环线
+2026-07-14 15:02:10 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 15:02:10
+2026-07-14 15:02:20 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 10.3s
+2026-07-14 15:05:07 | INFO    | backend.app:280 | 上传路线 name=措美峰穿扎尕那 user=verify_user action=created route_id=10
+2026-07-14 15:07:22 | INFO    | backend.app:371 | 添加自定义 POI id=778 name=测试标记点 route=措美峰穿扎尕那 by user=verify_user
+2026-07-14 15:09:03 | WARNING | forecast:129 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-14 15:10:36 | INFO    | backend.app:312 | 删除路线 id=10 name=措美峰穿扎尕那 by user=verify_user
+2026-07-14 15:15:17 | INFO    | __main__:732 | 启动 http://localhost:8000
+2026-07-14 15:15:17 | INFO    | __main__:733 | GPX 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/gpx
+2026-07-14 15:15:17 | INFO    | __main__:734 | Web 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/web
+2026-07-14 15:15:17 | INFO    | __main__:735 | 数据源: open-meteo=on, qweather=on, caiyun=on
+2026-07-14 15:15:17 | INFO    | __main__:53 | 启动: 初始化数据库与路由缓存
+2026-07-14 15:15:17 | INFO    | __main__:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-14 15:15:17 | INFO    | __main__:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-14 15:15:17 | INFO    | __main__:117 | 从数据库加载路线: 梅子坪古道环线
+2026-07-14 15:15:47 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 15:15:47
+2026-07-14 15:15:56 | INFO    | __main__:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 9.0s
+2026-07-14 15:27:20 | INFO    | __main__:732 | 启动 http://localhost:8000
+2026-07-14 15:27:20 | INFO    | __main__:733 | GPX 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/gpx
+2026-07-14 15:27:20 | INFO    | __main__:734 | Web 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/web
+2026-07-14 15:27:20 | INFO    | __main__:735 | 数据源: open-meteo=on, qweather=on, caiyun=on
+2026-07-14 15:27:20 | INFO    | __main__:53 | 启动: 初始化数据库与路由缓存
+2026-07-14 15:27:20 | INFO    | __main__:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-14 15:27:20 | INFO    | __main__:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-14 15:27:20 | INFO    | __main__:117 | 从数据库加载路线: 梅子坪古道环线
+2026-07-14 15:27:42 | INFO    | backend.app:371 | 添加自定义 POI id=670 name=自定义点 27 route=梅子坪古道环线 by user=xiaoaifu20@163.com
+2026-07-14 15:27:44 | WARNING | forecast:129 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-14 15:27:50 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 15:27:50
+2026-07-14 15:27:50 | ERROR   | forecast:126 | Open-Meteo batch 拉取失败 (n=26)
+Traceback (most recent call last):
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/http_proxy.py", line 316, in handle_async_request
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/http11.py", line 376, in start_tls
+    return await self._stream.start_tls(ssl_context, server_hostname, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_backends/anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/backend/forecast.py", line 122, in fetch_open_meteo_batch
+    r = await client.get(config.OPEN_METEO_URL, params=params, timeout=15)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1768, in get
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-07-14 15:28:01 | INFO    | __main__:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 11.2s
+2026-07-14 16:17:34 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 16:17:34
+2026-07-14 16:17:36 | WARNING | forecast:129 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-14 16:17:38 | INFO    | backend.app:156 | refresh 完成: 4 个 POI, 落库 28 行, 用时 4.7s
+2026-07-14 19:38:44 | INFO    | __main__:732 | 启动 http://localhost:8000
+2026-07-14 19:38:44 | INFO    | __main__:733 | GPX 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/gpx
+2026-07-14 19:38:44 | INFO    | __main__:734 | Web 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/web
+2026-07-14 19:38:44 | INFO    | __main__:735 | 数据源: open-meteo=on, qweather=on, caiyun=on
+2026-07-14 19:38:44 | INFO    | __main__:53 | 启动: 初始化数据库与路由缓存
+2026-07-14 19:38:44 | INFO    | __main__:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-14 19:38:44 | INFO    | __main__:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-14 19:38:44 | INFO    | __main__:117 | 从数据库加载路线: 梅子坪古道环线
+2026-07-14 19:39:14 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 19:39:14
+2026-07-14 19:39:25 | WARNING | forecast:129 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-14 19:39:27 | INFO    | __main__:156 | refresh 完成: 30 个 POI, 落库 210 行, 用时 12.8s
+2026-07-14 19:41:21 | INFO    | __main__:732 | 启动 http://localhost:8000
+2026-07-14 19:41:21 | INFO    | __main__:733 | GPX 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/gpx
+2026-07-14 19:41:21 | INFO    | __main__:734 | Web 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/web
+2026-07-14 19:41:21 | INFO    | __main__:735 | 数据源: open-meteo=on, qweather=on, caiyun=on
+2026-07-14 19:41:21 | INFO    | __main__:53 | 启动: 初始化数据库与路由缓存
+2026-07-14 19:41:21 | INFO    | __main__:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-14 19:41:21 | INFO    | __main__:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-14 19:41:21 | INFO    | __main__:117 | 从数据库加载路线: 梅子坪古道环线
+2026-07-14 19:41:51 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 19:41:51
+2026-07-14 19:42:01 | WARNING | forecast:129 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-14 19:42:03 | INFO    | __main__:156 | refresh 完成: 30 个 POI, 落库 210 行, 用时 11.6s
+2026-07-14 19:49:09 | WARNING | forecast:129 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-14 19:49:11 | INFO    | backend.app:156 | refresh 完成: 4 个 POI, 落库 28 行, 用时 3.5s
+2026-07-14 20:09:19 | INFO    | backend.app:53 | 启动: 初始化数据库与路由缓存
+2026-07-14 20:09:19 | INFO    | backend.app:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-14 20:09:19 | INFO    | backend.app:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-14 20:09:19 | INFO    | backend.app:117 | 从数据库加载路线: 梅子坪古道环线
+2026-07-14 20:09:44 | WARNING | forecast:130 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-14 20:09:49 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 20:09:49
+2026-07-14 20:10:04 | WARNING | forecast:130 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-14 20:10:07 | INFO    | backend.app:156 | refresh 完成: 30 个 POI, 落库 480 行, 用时 17.9s
+2026-07-14 20:12:09 | INFO    | backend.app:53 | 启动: 初始化数据库与路由缓存
+2026-07-14 20:12:09 | INFO    | backend.app:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-14 20:12:09 | INFO    | backend.app:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-14 20:12:09 | INFO    | backend.app:117 | 从数据库加载路线: 梅子坪古道环线
+2026-07-14 20:12:39 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 20:12:39
+2026-07-14 20:12:49 | WARNING | forecast:130 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-14 20:12:51 | INFO    | backend.app:156 | refresh 完成: 30 个 POI, 落库 480 行, 用时 11.4s
+2026-07-14 20:14:06 | WARNING | forecast:130 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-14 20:14:28 | INFO    | app:53 | 启动: 初始化数据库与路由缓存
+2026-07-14 20:14:28 | INFO    | app:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-14 20:14:28 | INFO    | app:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-14 20:14:28 | INFO    | app:117 | 从数据库加载路线: 梅子坪古道环线
+2026-07-14 20:16:11 | INFO    | __main__:732 | 启动 http://localhost:8000
+2026-07-14 20:16:11 | INFO    | __main__:733 | GPX 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/gpx
+2026-07-14 20:16:11 | INFO    | __main__:734 | Web 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/web
+2026-07-14 20:16:11 | INFO    | __main__:735 | 数据源: open-meteo=on, qweather=on, caiyun=on
+2026-07-14 20:16:11 | INFO    | __main__:53 | 启动: 初始化数据库与路由缓存
+2026-07-14 20:16:11 | INFO    | __main__:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-14 20:16:11 | INFO    | __main__:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-14 20:16:11 | INFO    | __main__:117 | 从数据库加载路线: 梅子坪古道环线
+2026-07-14 20:16:41 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 20:16:41
+2026-07-14 20:16:51 | WARNING | forecast:130 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-14 20:16:53 | INFO    | __main__:156 | refresh 完成: 30 个 POI, 落库 480 行, 用时 11.9s

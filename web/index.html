@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="徒步路线天气监测 - 海拔修正、风险评估、离线预报">
+    <title>徒步路线天气监测 · 安全出行</title>
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="apple-touch-icon" href="/static/icon-192.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/style.css?v=20260715a"/>
+</head>
+<body>
+<div class="min-h-screen bg-slate-50">
+
+    <!-- Header -->
+    <header class="bg-slate-900 text-white shadow-lg">
+        <div class="max-w-[1600px] mx-auto px-6 py-3">
+            <div class="flex items-center justify-between flex-wrap gap-3">
+                <div>
+                    <h1 class="text-xl font-bold flex items-center gap-3">
+                        <span>⛰️</span>
+                        <span id="route-name">加载中...</span>
+                    </h1>
+                    <div id="route-meta" class="text-sm text-slate-300 mt-1"></div>
+                </div>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <div class="bg-slate-800 px-3 py-2 rounded-lg flex items-center gap-2">
+                        <label class="text-xs text-slate-300">📅 出发日</label>
+                        <input type="date" id="departure-date" class="bg-slate-700 text-white px-2 py-1 rounded text-sm">
+                    </div>
+
+                    <div class="bg-slate-800 px-3 py-2 rounded-lg flex items-center gap-2">
+                        <label class="text-xs text-slate-300">🗓 天数</label>
+                        <input type="number" id="trip-days" min="1" max="16" value="4"
+                               class="bg-slate-700 text-white px-2 py-1 rounded text-sm w-16 text-center"
+                               title="徒步天数 1-16 天 (8-16 天为长期参考, 精度低)">
+                    </div>
+
+                    <div class="bg-slate-800 px-3 py-2 rounded-lg flex items-center gap-2">
+                        <label class="text-xs text-slate-300">📁 我的路线</label>
+                        <select id="my-routes" class="bg-slate-700 text-white px-2 py-1 rounded text-sm max-w-[180px]">
+                            <option value="">加载中...</option>
+                        </select>
+                        <button id="btn-delete-route" title="删除当前选中路线"
+                                class="bg-red-700 hover:bg-red-600 text-white px-2 py-1 rounded text-xs font-medium transition">
+                            🗑
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-800 px-3 py-2 rounded-lg flex items-center gap-2">
+                        <label for="gpx-input" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded text-xs font-medium cursor-pointer transition flex items-center gap-1">
+                            <span>⬆ 上传 GPX</span>
+                        </label>
+                        <input type="file" id="gpx-input" accept=".gpx" class="hidden">
+                    </div>
+
+                    <button id="btn-add-marker" title="进入添加标记模式，然后点地图任意位置创建自定义 POI"
+                            class="bg-amber-600 hover:bg-amber-500 text-white px-3 py-2 rounded-lg text-xs font-medium transition flex items-center gap-1">
+                        <span>➕ 添加标记</span>
+                    </button>
+
+                    <button id="logout-btn" class="bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg text-xs text-slate-300 transition flex items-center gap-2" title="点击退出登录">
+                        <span id="login-tag">未登录</span>
+                        <span class="text-slate-500">|</span>
+                        <span>退出</span>
+                    </button>
+
+                    <!-- 刷新状态 -->
+                    <button id="btn-refresh" title="立即刷新预报" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded-lg text-xs font-medium transition flex items-center gap-1">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10"/><path d="M20.49 15a9 9 0 01-14.85 3.36L1 14"/></svg>
+                        <span id="refresh-label">立即刷新</span>
+                    </button>
+                    <button id="btn-compare" title="并排对比 2-3 个候选出发日的天气与风险" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-lg text-xs font-medium transition flex items-center gap-1">
+                        <span>📅 择日对比</span>
+                    </button>
+                    <div id="last-refresh" class="text-xs text-slate-400 max-w-[160px]">⏳ 等待首次刷新</div>
+
+                    <!-- 资源下载下拉 (hover 触发) -->
+                    <div class="relative group">
+                        <button type="button" class="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 cursor-pointer">
+                            <span>📥 资源下载</span>
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor" class="transition-transform group-hover:rotate-180"><path d="M0 0l5 6 5-6z"/></svg>
+                        </button>
+                        <div class="absolute right-0 top-full pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 min-w-[260px]">
+                            <div class="bg-white shadow-xl rounded-lg border border-slate-200 overflow-hidden">
+                                <button type="button" id="btn-export" class="block w-full text-left px-4 py-3 hover:bg-red-50 text-slate-700 border-b border-slate-100 transition">
+                                    <div class="font-medium text-sm flex items-center gap-2">📄 离线包 PDF</div>
+                                    <div class="text-xs text-slate-500 mt-0.5">含路线 / 节点预报 / 装备建议</div>
+                                </button>
+                                <button type="button" id="btn-guide" class="block w-full text-left px-4 py-3 hover:bg-blue-50 text-slate-700 transition">
+                                    <div class="font-medium text-sm flex items-center gap-2">📖 操作指引 MD</div>
+                                    <div class="text-xs text-slate-500 mt-0.5">使用说明 / 风险规则 / 应急信息</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-1 text-xs">
+                        <span class="text-slate-400">数据源:</span>
+                        <span id="src-om" class="badge badge-blue">Open-Meteo</span>
+                        <span id="src-qw" class="badge badge-gray">和风未配置</span>
+                        <span id="src-cy" class="badge badge-gray">彩云未配置</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-[1600px] mx-auto p-6 grid grid-cols-12 gap-4">
+
+        <!-- 行程整体风险汇总条 -->
+        <section class="col-span-12 bg-white rounded-lg shadow" id="trip-risk-section">
+            <div class="px-4 py-3 border-b flex items-center justify-between">
+                <h2 class="font-semibold text-slate-700">🚨 行程整体风险 <span id="trip-risk-days-range">(D1-D4)</span></h2>
+                <span id="trip-risk-meta" class="text-xs text-slate-500"></span>
+            </div>
+            <div id="trip-risk-body" class="p-4">
+                <div class="text-center text-slate-400 py-4">⏳ 选择出发日, 自动计算 D1-D{N} 行程风险...</div>
+            </div>
+        </section>
+
+        <!-- 择日对比 (默认隐藏, 点 btn-compare 展开) -->
+        <section class="col-span-12 bg-white rounded-lg shadow hidden" id="compare-section">
+            <div class="px-4 py-3 border-b flex items-center justify-between">
+                <h2 class="font-semibold text-slate-700">📅 择日对比 <span class="text-xs text-slate-500 font-normal">(并排看 2-3 个候选出发日)</span></h2>
+                <button id="btn-compare-close" class="text-slate-400 hover:text-slate-700 text-sm">✕ 收起</button>
+            </div>
+            <div id="compare-body" class="p-4"></div>
+        </section>
+
+        <!-- 地图 -->
+        <section class="col-span-12 lg:col-span-7 bg-white rounded-lg shadow">
+            <div class="px-4 py-3 border-b flex items-center justify-between">
+                <h2 class="font-semibold text-slate-700">📍 路线地图</h2>
+                <div class="flex items-center gap-3 text-xs">
+                    <span><span class="legend-dot bg-camp"></span>营地</span>
+                    <span><span class="legend-dot bg-pass"></span>垭口</span>
+                    <span><span class="legend-dot bg-retreat"></span>下撤</span>
+                    <span><span class="legend-dot bg-danger"></span>危险</span>
+                    <span><span class="legend-dot bg-water"></span>水源</span>
+                    <span><span class="legend-dot bg-custom"></span>自定义</span>
+                </div>
+            </div>
+            <div id="map" class="w-full" style="height: 540px;"></div>
+        </section>
+
+        <!-- 预报面板 -->
+        <section class="col-span-12 lg:col-span-5 bg-white rounded-lg shadow">
+            <div class="px-4 py-3 border-b">
+                <h2 class="font-semibold text-slate-700">🌤️ 节点预报</h2>
+                <p class="text-xs text-slate-500 mt-1">点击地图/表格行查看 7 天预报</p>
+            </div>
+            <div id="forecast-panel" class="p-4 max-h-[560px] overflow-y-auto">
+                <div class="text-center text-slate-400 py-12">
+                    <div class="text-4xl mb-3">👆</div>
+                    <p>请选择关键节点查看预报</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 装备建议 -->
+        <section class="col-span-12 bg-white rounded-lg shadow">
+            <div class="px-4 py-3 border-b">
+                <h2 class="font-semibold text-slate-700">🎒 装备建议 <span class="text-xs font-normal text-slate-500">(按选定行程日期 + 路线特征生成)</span></h2>
+            </div>
+            <div id="gear-body" class="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="text-center text-slate-400 py-6 col-span-3">⏳ 装备建议生成中...</div>
+            </div>
+        </section>
+
+        <!-- 海拔剖面 -->
+        <section class="col-span-12 bg-white rounded-lg shadow">
+            <div class="px-4 py-3 border-b flex items-center justify-between">
+                <h2 class="font-semibold text-slate-700">📈 海拔剖面</h2>
+                <span id="profile-meta" class="text-xs text-slate-500"></span>
+            </div>
+            <div class="p-4">
+                <canvas id="profile-canvas" width="1560" height="240"></canvas>
+            </div>
+        </section>
+
+        <!-- 关键节点速览 -->
+        <section class="col-span-12 bg-white rounded-lg shadow">
+            <div class="px-4 py-3 border-b flex items-center justify-between">
+                <h2 class="font-semibold text-slate-700">🏕️ 关键节点速览</h2>
+                <span class="text-xs text-slate-500">徽章基于上方出发日的 D1 预报 · 点击行查看详情</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-slate-50 text-slate-600">
+                        <tr id="poi-table-header-row">
+                            <th class="px-3 py-2 text-left">#</th>
+                            <th class="px-3 py-2 text-left">节点</th>
+                            <th class="px-3 py-2 text-left">类型</th>
+                            <th class="px-3 py-2 text-right">海拔</th>
+                            <!-- D1..D{N} 由 JS 根据 tripDays 动态填充 -->
+                            <th class="px-3 py-2 text-left">数据源</th>
+                        </tr>
+                    </thead>
+                    <tbody id="poi-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400 text-xs py-4 mt-6">
+        <div class="max-w-[1600px] mx-auto px-6">
+            <p>⚠️ 本系统仅供参考。山区天气多变，最终是否出行请咨询当地向导和应急部门。</p>
+            <p class="mt-1">徒步路线天气监测 MVP v0.2 · 多源融合(Open-Meteo + 和风 + 彩云) · 海拔修正 Γ=6°C/km · PDF 离线包</p>
+        </div>
+    </footer>
+</div>
+
+<script src="/static/app.js?v=20260715a"></script>
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js').catch(function(e) {
+            console.warn('SW 注册失败:', e);
+        });
+    });
+}
+</script>
+</body>
+</html>

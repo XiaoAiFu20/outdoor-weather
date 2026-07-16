@@ -1,0 +1,410 @@
+2026-07-10 02:29:07 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 02:29:07
+2026-07-10 02:29:12 | INFO    | backend.app:156 | refresh 完成: 28 个 POI, 落库 196 行, 用时 4.4s
+2026-07-10 09:28:25 | INFO    | __main__:729 | 启动 http://localhost:8000
+2026-07-10 09:28:25 | INFO    | __main__:730 | GPX 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/gpx
+2026-07-10 09:28:25 | INFO    | __main__:731 | Web 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/web
+2026-07-10 09:28:25 | INFO    | __main__:732 | 数据源: open-meteo=on, qweather=on, caiyun=on
+2026-07-10 09:28:25 | INFO    | __main__:53 | 启动: 初始化数据库与路由缓存
+2026-07-10 09:28:25 | INFO    | __main__:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-10 09:28:25 | INFO    | __main__:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-10 09:28:55 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 09:28:55
+2026-07-10 09:29:04 | INFO    | __main__:156 | refresh 完成: 28 个 POI, 落库 196 行, 用时 8.8s
+2026-07-10 10:25:08 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 10:25:08
+2026-07-10 10:25:13 | INFO    | backend.app:156 | refresh 完成: 28 个 POI, 落库 196 行, 用时 5.1s
+2026-07-10 10:42:09 | INFO    | __main__:729 | 启动 http://localhost:8000
+2026-07-10 10:42:09 | INFO    | __main__:730 | GPX 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/gpx
+2026-07-10 10:42:09 | INFO    | __main__:731 | Web 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/web
+2026-07-10 10:42:09 | INFO    | __main__:732 | 数据源: open-meteo=on, qweather=on, caiyun=on
+2026-07-10 10:42:09 | INFO    | __main__:53 | 启动: 初始化数据库与路由缓存
+2026-07-10 10:42:09 | INFO    | __main__:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-10 10:42:09 | INFO    | __main__:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-10 10:42:39 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 10:42:39
+2026-07-10 10:42:52 | INFO    | __main__:156 | refresh 完成: 28 个 POI, 落库 196 行, 用时 13.1s
+2026-07-10 10:43:18 | INFO    | backend.app:368 | 添加自定义 POI id=643 name=自定义点 99 route=香港鸡公岭 by user=xiaoaifu20@163.com
+2026-07-10 10:43:19 | WARNING | forecast:129 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-10 13:48:08 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 13:48:08
+2026-07-10 13:48:08 | ERROR   | forecast:126 | Open-Meteo batch 拉取失败 (n=26)
+Traceback (most recent call last):
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/backend/forecast.py", line 122, in fetch_open_meteo_batch
+    r = await client.get(config.OPEN_METEO_URL, params=params, timeout=15)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1768, in get
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2026-07-10 13:48:09 | ERROR   | forecast:126 | Open-Meteo batch 拉取失败 (n=3)
+Traceback (most recent call last):
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/backend/forecast.py", line 122, in fetch_open_meteo_batch
+    r = await client.get(config.OPEN_METEO_URL, params=params, timeout=15)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1768, in get
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2026-07-10 13:48:09 | INFO    | backend.app:156 | refresh 完成: 0 个 POI, 落库 0 行, 用时 0.3s
+2026-07-10 14:16:02 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 14:16:02
+2026-07-10 14:16:06 | INFO    | __main__:156 | refresh 完成: 28 个 POI, 落库 196 行, 用时 4.4s
+2026-07-10 15:38:03 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 15:38:03
+2026-07-10 15:38:08 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 4.8s
+2026-07-10 15:53:34 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 15:53:34
+2026-07-10 15:53:40 | INFO    | __main__:156 | refresh 完成: 28 个 POI, 落库 196 行, 用时 6.3s
+2026-07-10 16:44:26 | INFO    | __main__:729 | 启动 http://localhost:8000
+2026-07-10 16:44:26 | INFO    | __main__:730 | GPX 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/gpx
+2026-07-10 16:44:26 | INFO    | __main__:731 | Web 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/web
+2026-07-10 16:44:26 | INFO    | __main__:732 | 数据源: open-meteo=on, qweather=on, caiyun=on
+2026-07-10 16:44:26 | INFO    | __main__:53 | 启动: 初始化数据库与路由缓存
+2026-07-10 16:44:26 | INFO    | __main__:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-10 16:44:26 | INFO    | __main__:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-10 16:44:56 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 16:44:56
+2026-07-10 16:45:02 | WARNING | forecast:129 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-10 16:45:02 | WARNING | forecast:129 | Open-Meteo batch 返回结构异常, 期望 1 项实际 -1
+2026-07-10 16:45:06 | INFO    | __main__:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 9.7s
+2026-07-10 22:56:00 | INFO    | __main__:729 | 启动 http://localhost:8000
+2026-07-10 22:56:00 | INFO    | __main__:730 | GPX 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/gpx
+2026-07-10 22:56:00 | INFO    | __main__:731 | Web 目录: /Users/xiaoaifu/workPlace/claudecode/outdoor-weather/web
+2026-07-10 22:56:00 | INFO    | __main__:732 | 数据源: open-meteo=on, qweather=on, caiyun=on
+2026-07-10 22:56:00 | INFO    | __main__:53 | 启动: 初始化数据库与路由缓存
+2026-07-10 22:56:00 | INFO    | __main__:117 | 从数据库加载路线: 措美峰穿扎尕那
+2026-07-10 22:56:00 | INFO    | __main__:117 | 从数据库加载路线: 香港鸡公岭
+2026-07-10 22:56:30 | INFO    | __main__:166 | scheduler 触发定时刷新 @ 22:56:30
+2026-07-10 22:56:37 | INFO    | __main__:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 6.7s
+2026-07-10 22:57:21 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 22:57:21
+2026-07-10 22:57:25 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 3.4s
+2026-07-11 10:07:21 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 10:07:21
+2026-07-11 10:07:26 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 4.3s
+2026-07-11 11:07:26 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 11:07:26
+2026-07-11 11:07:31 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 5.6s
+2026-07-11 12:07:31 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 12:07:31
+2026-07-11 12:07:38 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 6.3s
+2026-07-11 13:07:38 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 13:07:38
+2026-07-11 13:07:44 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 6.5s
+2026-07-12 12:51:50 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 12:51:50
+2026-07-12 13:03:10 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 680.4s
+2026-07-12 16:35:35 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 16:35:35
+2026-07-12 16:35:39 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 4.5s
+2026-07-13 09:33:44 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 09:33:44
+2026-07-13 09:33:44 | ERROR   | forecast:126 | Open-Meteo batch 拉取失败 (n=26)
+Traceback (most recent call last):
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/backend/forecast.py", line 122, in fetch_open_meteo_batch
+    r = await client.get(config.OPEN_METEO_URL, params=params, timeout=15)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1768, in get
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2026-07-13 09:33:44 | ERROR   | forecast:126 | Open-Meteo batch 拉取失败 (n=3)
+Traceback (most recent call last):
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/backend/forecast.py", line 122, in fetch_open_meteo_batch
+    r = await client.get(config.OPEN_METEO_URL, params=params, timeout=15)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1768, in get
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/xiaoaifu/workPlace/claudecode/outdoor-weather/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+2026-07-13 09:33:44 | INFO    | backend.app:156 | refresh 完成: 0 个 POI, 落库 0 行, 用时 0.2s
+2026-07-13 14:08:51 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 14:08:51
+2026-07-13 14:08:56 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 5.0s
+2026-07-13 15:45:50 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 15:45:50
+2026-07-13 15:45:54 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 4.3s
+2026-07-13 17:01:17 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 17:01:17
+2026-07-13 17:01:21 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 4.0s
+2026-07-14 06:15:22 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 06:15:22
+2026-07-14 06:15:26 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 4.6s
+2026-07-14 10:29:22 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 4.2s
+2026-07-14 10:29:41 | INFO    | backend.app:277 | 上传路线 name=梅子坪古道环线 user=xiaoaifu20@163.com action=created route_id=9
+2026-07-14 11:59:41 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 4.1s
+2026-07-14 12:00:32 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 13.6s
+2026-07-14 13:17:16 | INFO    | backend.app:166 | scheduler 触发定时刷新 @ 13:17:16
+2026-07-14 13:17:20 | INFO    | backend.app:156 | refresh 完成: 29 个 POI, 落库 203 行, 用时 4.2s
