@@ -75,6 +75,8 @@ tests/
 
 ## 开发环境
 
+> **macOS 前置要求**：需 Python 3.10+；macOS 自带的 `python3` 一般只有 3.9，请先 `python3 --version` 确认，低于 3.10 就用 `brew install python@3.12`（Homebrew 需先 `xcode-select --install`）或 python.org 安装包另装 3.10+ 版本，并确保 `python3` 指向它。
+
 ```bash
 # 1. venv + 依赖
 python3 -m venv .venv
