@@ -114,3 +114,9 @@ docker-compose up -d
 - UI 严禁出现「安全 / 可前往」字眼
 - 所有预报强制标注「参考值 + 数据源 + 更新时间」
 - 8-16 天长期段必须明显标注精度低（避免绝对化承诺）
+
+## 常见问题
+
+**Q: 为什么需要 Python 3.10+？**
+
+A: 因为后端代码的类型注解直接使用了 Python 3.10 才支持的 `X | Y` 联合类型写法（PEP 604），比如 `dict | None`、`str | None`、`list[dict | None]`，并且没有用 `from __future__ import annotations` 延迟求值——模块导入时这些注解就会被执行。在 Python 3.9 及以下会直接抛 `TypeError: unsupported operand type(s) for |: 'type' and 'NoneType'`，服务根本起不来。所以 3.10 是硬性下限，不是建议；用 Docker 部署不受影响（镜像基于 `python:3.12-slim`）。
